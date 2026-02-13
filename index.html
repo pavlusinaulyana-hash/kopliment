@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Комплименты для подружек ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid rgba(255, 182, 193, 0.5);
+        }
+
+        h1 {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb6c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+        }
+
+        .subtitle {
+            color: #ff69b4;
+            margin-bottom: 30px;
+            font-size: 1.3em;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .compliment-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f5 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 30px 0;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            line-height: 1.6;
+            color: #d44e6c;
+            box-shadow: inset 0 4px 15px rgba(255, 182, 193, 0.3), 0 10px 20px rgba(255, 105, 180, 0.2);
+            border: 3px solid rgba(255, 192, 203, 0.8);
+            transition: all 0.4s ease;
+            font-weight: 500;
+            word-break: break-word;
+            text-align: center;
+            white-space: pre-wrap;
+            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .compliment-box:hover {
+            transform: scale(1.02);
+            box-shadow: inset 0 6px 20px rgba(255, 182, 193, 0.4), 0 15px 30px rgba(255, 105, 180, 0.3);
+            border-color: #ff69b4;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0 30px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 1.4em;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 220px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff69b4, #ff8da1);
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #ffb6c1, #ffc0cb);
+            color: #d44e6c;
+            font-size: 1.5em;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
+        }
+
+        .emoji-decoration {
+            font-size: 2.5em;
+            margin: 10px 0 5px;
+            animation: sparkle 2s ease infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff69b4;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            font-weight: 500;
+            border: 2px solid white;
+            font-size: 1.2em;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: #ff69b4;
+            font-size: 1.1em;
+            padding-top: 20px;
+            border-top: 2px dashed #ffb6c1;
+        }
+
+        .heart {
+            color: #ff1493;
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .compliment-box {
+                font-size: 1.5em;
+                padding: 40px 20px;
+                min-height: 200px;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.2em;
+                min-width: 180px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji-decoration">🌸 👸 💕 ✨ 🌺</div>
+        <h1>✨ Для самых лучших подружек ✨</h1>
+        <p class="subtitle">💖 Нажми кнопку и получи порцию тепла 💖</p>
+
+        <!-- Блок с комплиментом -->
+        <div class="compliment-box" id="complimentDisplay">
+            Нажми кнопку, чтобы получить комплимент!
+        </div>
+
+        <!-- Только две кнопки: Новый комплимент и Копировать -->
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="getRandomCompliment()">
+                🎀 Новый комплимент
+            </button>
+            <button class="btn btn-secondary" onclick="copyCompliment()">
+                📋 Копировать
+            </button>
+        </div>
+
+        <div class="footer">
+            Сделано с <span class="heart">❤️</span> для поднятия настроения
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div class="toast" id="toast">Скопировано!</div>
+
+    <script>
+        // Комплименты только для девочек-подружек (65 штук)
+        const compliments = [
+            "У тебя такие красивые глаза — в них можно утонуть!",
+            "Твоя улыбка освещает всё вокруг!",
+            "Ты выглядишь сегодня просто потрясающе!",
+            "У тебя идеальная кожа, просто зависть берёт!",
+            "Твои волосы такие шикарные, как у принцессы!",
+            "Ты такая милая, что хочется тебя обнять!",
+            "У тебя самая красивая улыбка на свете!",
+            "Ты выглядишь как ангел!",
+            "Твои ресницы такие длинные — загляденье!",
+            "У тебя такой нежный и красивый голос!",
+            "Ты самая добрая девочка, которую я знаю!",
+            "С тобой так легко и приятно общаться!",
+            "Ты очень чуткая и всегда понимаешь меня!",
+            "Ты невероятно искренняя и настоящая!",
+            "Твоя энергия просто заразительна!",
+            "Ты умеешь поддержать в трудную минуту!",
+            "Ты такая жизнерадостная — с тобой не соскучишься!",
+            "Ты очень заботливая и внимательная!",
+            "Твоё сердце такое же красивое, как и ты!",
+            "Ты умеешь слушать и слышать — это редкость!",
+            "Ты очень сильная и мудрая не по годам!",
+            "У тебя отличный вкус в одежде!",
+            "Ты всегда выглядишь стильно и модно!",
+            "Твои наряды всегда такие красивые!",
+            "Ты умеешь подобрать идеальный образ!",
+            "Твой макияж всегда безупречен!",
+            "У тебя такое чувство стиля — как у модели!",
+            "Ты выглядишь как с обложки журнала!",
+            "Твой стиль вдохновляет меня!",
+            "Ты лучшая подруга, о которой можно только мечтать!",
+            "С тобой можно быть самой собой — это бесценно!",
+            "Ты делаешь мою жизнь ярче и счастливее!",
+            "Мы с тобой как сёстры по духу!",
+            "Ты всегда знаешь, как меня рассмешить!",
+            "С тобой любой день становится праздником!",
+            "Ты настоящий друг — верный и надёжный!",
+            "Я так рада, что мы подружились!",
+            "Ты мой лучик света в серые дни!",
+            "С тобой можно делиться всеми секретами!",
+            "Ты понимаешь меня с полуслова!",
+            "Ты не только красивая, но и очень умная!",
+            "Ты очень талантливая — у тебя золотые руки!",
+            "Твои идеи всегда гениальны!",
+            "Ты умеешь находить выход из любой ситуации!",
+            "Ты очень творческая личность!",
+            "Ты многого добьёшься в жизни, я уверена!",
+            "Ты очень мудрая и рассудительная!",
+            "У тебя отличное чувство юмора!",
+            "Ты очень сообразительная и быстрая!",
+            "Ты умеешь вдохновлять окружающих!",
+            "Твой внутренний мир такой богатый и глубокий!",
+            "Ты пахнешь как самый вкусный цветочек!",
+            "Ты мой любимый человечек!",
+            "Ты такая уютная, как тёплый плед зимой!",
+            "Ты как фея — делаешь чудеса просто так!",
+            "Твои селфи всегда самые лучшие!",
+            "Ты мой источник вдохновения!",
+            "Ты сочетаешь в себе нежность и силу!",
+            "Ты умеешь находить прекрасное в мелочах!",
+            "Ты как радуга после дождя!",
+            "С тобой мир становится добрее!",
+            "Ты самая нежная и заботливая!",
+            "У тебя самое доброе сердце на свете!",
+            "Ты умеешь любить по-настоящему!",
+            "Ты просто космос! ✨",
+            "Ты лучше всех!"
+        ];
+
+        // Получить случайный комплимент
+        function getRandomCompliment() {
+            const randomIndex = Math.floor(Math.random() * compliments.length);
+            const compliment = compliments[randomIndex];
+            const display = document.getElementById('complimentDisplay');
+            
+            // Добавляем анимацию
+            display.classList.remove('fade-in');
+            void display.offsetWidth; // форсируем перерисовку
+            display.classList.add('fade-in');
+            
+            display.textContent = compliment;
+        }
+
+        // Копировать в буфер обмена
+        function copyCompliment() {
+            const compliment = document.getElementById('complimentDisplay').textContent;
+            
+            if (compliment && compliment !== 'Нажми кнопку, чтобы получить комплимент!') {
+                navigator.clipboard.writeText(compliment).then(() => {
+                    showToast('✅ Комплимент скопирован!');
+                }).catch(() => {
+                    showToast('❌ Ошибка копирования');
+                });
+            } else {
+                showToast('❌ Сначала получите комплимент!');
+            }
+        }
+
+        // Показать уведомление
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Инициализация при загрузке
+        window.onload = () => {
+            getRandomCompliment();
+            
+            // Добавляем поддержку пробела для нового комплимента
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    getRandomCompliment();
+                }
+            });
+        };
+    </script>
+</body>
+</html>
